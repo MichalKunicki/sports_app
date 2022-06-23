@@ -5,8 +5,28 @@
   height: 60px;
   position: fixed;
   top: 0;
-  background-color: $primary-color;
+  background-color: $darkGray;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  z-index: 50;
+  color: white;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+.logo {
+  font-family: 'Alfa Slab One', cursive;
+}
+.logo:hover {
+  color: $green;
+  cursor: pointer;
+}
+.links {
+  margin-bottom: 2px;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 }

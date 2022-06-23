@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.header {
+  height: 60vh;
+  width: 100%;
+  grid-column: 1 / -1;
+  scroll-snap-align: start;
+  position: relative;
+  display: grid;
+  place-content: center;
+  &:before {
+    content: "";
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    background-color: $gray;
+    opacity: 0.5;
+    z-index: 1;
+    left: 0;
+  }
+}
+.headertext {
+  color: white;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  font-size: 3.3em;
+}
+.subheadingContainer {
+  display: flex;
+  justify-content: center;
+}
+.subheadertext {
+  color: white;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+  text-decoration: underline;
+  text-decoration-color: $green;
+}
+//SVG arrow is styled and animated inside globals.scss
