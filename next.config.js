@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["www.scorebat.com", "crests.football-data.org"],
+    domains: [
+      "www.scorebat.com",
+      "crests.football-data.org",
+      "upload.wikimedia.org",
+    ],
   },
 };
 

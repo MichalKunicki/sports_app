@@ -3,7 +3,7 @@ import { Team, TeamStandings } from "../types";
 import styles from "../styles/Standings.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import StandingsFilters from "../components/standingsFilters/standingsFilters";
+import StandingsFilters from "../components/standingsFilters/StandingsFilters";
 
 const Fixtures: NextPage<{ table: TeamStandings[] }> = ({ table }) => {
   return (

@@ -51,7 +51,7 @@ const Home: NextPage<{ fullVideoList: FullVideoList[] }> = ({
                   alt="thumbnail-photo"
                   src={video.thumbnail}
                   layout="responsive"
-                  height="60%"
+                  height="55%"
                   width="100%"
                   onError={(e) => handleImageError(e)}
                 />
