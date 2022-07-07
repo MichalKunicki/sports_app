@@ -1,36 +1,91 @@
-import { GetServerSideProps, NextPage } from "next";
-import { Matches } from "../types";
+import { GetServerSideProps } from "next";
+import { MatchesGroupedArray } from "../types";
+import styles from "../styles/Fixtures.module.scss";
+import Image from "next/image";
+import { match } from "assert";
 
 const today = new Date().toISOString().slice(0, 10);
 const [yyyy, mm, dd] = today.split("-");
 const plusOneWeek = `${yyyy}-${mm}-${Number(dd) + 7}`;
 
-const groupBy = (array: Matches[], key: string) => {
-  // Return the end result
-  return array.reduce((result, currentValue: any) => {
-    // If an array already present for key, push it to the array. Else create an array and push the object
-    (result[currentValue[key]] = result[currentValue[key]] || []).push(
-      currentValue
-    );
-    // Return the current iteration `result` value, this will be taken as next iteration `result` value and accumulate
-    return result;
-  }, {}); // empty object is the initial value for result object
-};
+interface Competition {
+  name: string;
+  url: string;
+  area: string;
+}
 
 const Fixtures = ({
-  matchesGroupedArray,
+  matches,
+  competitions,
 }: {
-  matchesGroupedArray: Matches[];
+  matches: MatchesGroupedArray[];
+  competitions: Competition[];
 }) => {
+  const formatDate = (date: Date) => {
+    const day = date.toString().slice(8, 10);
+    const month = date.toString().slice(4, 7);
+    const dayAndMonth = day + month;
+    const time = date.toString().slice(11, 16);
+    return dayAndMonth + " | " + time;
+  };
+
   return (
-    <div>
-      {matchesGroupedArray.map((match: Matches) => (
-        <div
-          key={match.id}
-        >{`${match.homeTeam.name} : ${match.awayTeam.name}`}</div>
+    <section className={styles.fixturesPage}>
+      <h1>FIXTURES THIS WEEK (UTC Time)</h1>
+      {competitions.map((comp, i) => (
+        <div className={styles.competitionContainer} key={i}>
+          <div className={styles.competitionName}>
+            <div className={styles.logoBackground}>
+              <Image
+                alt="competition-crest"
+                src={comp.url}
+                height={40}
+                width={40}
+              />
+            </div>
+            <span>{comp.name}</span>
+            <span className={styles.area}>{`(${comp.area})`}</span>
+          </div>
+          <div>
+            {matches.map((match) => {
+              if (comp.name === match.competition.name) {
+                return (
+                  <div className={styles.match} key={match.id}>
+                    <span>{formatDate(match.utcDate)}</span>
+                    {match.homeTeam.crest !== null && (
+                      <Image
+                        alt="hometeam-crest"
+                        src={match.homeTeam.crest}
+                        height={18}
+                        width={18}
+                      />
+                    )}
+                    <span
+                      className={styles.homeSide}
+                    >{`${match.homeTeam.name} : `}</span>
+                    {match.awayTeam.crest !== null && (
+                      <Image
+                        alt="awayteam-crest"
+                        src={match.awayTeam.crest}
+                        height={18}
+                        width={18}
+                      />
+                    )}
+                    <span className={styles.awaySide}>
+                      {`${match.awayTeam.name}`}
+                    </span>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
       ))}
-      <pre>{JSON.stringify(matchesGroupedArray, undefined, 2)}</pre>;
-    </div>
+
+      <div>
+        <pre>{JSON.stringify(matches, undefined, 2)}</pre>;
+      </div>
+    </section>
   );
 };
 
@@ -45,13 +100,33 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   );
-  const { matches }: { matches: Matches[] } = await response.json();
-  const matchesGrouped = groupBy(matches, "competition");
-  const matchesGroupedArray = Object.values(matchesGrouped)[0];
+  // Matches Array
+  const { matches }: { matches: MatchesGroupedArray[] } = await response.json();
+
+  //Competitions Array
+  const competitions: Competition[] = [];
+
+  matches.forEach((match) => {
+    const isFound = competitions.some((comp) => {
+      if (comp.name === match.competition.name) {
+        return true;
+      }
+      return false;
+    });
+
+    const obj: Competition = {
+      name: match.competition.name,
+      url: match.competition.emblem,
+      area: match.area.name,
+    };
+    !isFound && competitions.push(obj);
+  });
+  console.log(competitions);
+
   return {
     props: {
       matches,
-      matchesGroupedArray,
+      competitions,
     },
   };
 };

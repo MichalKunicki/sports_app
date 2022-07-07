@@ -1,0 +1,49 @@
+@import "../styles/variables.scss";
+
+.fixturesPage {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+.competitionContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: $gray;
+  color: white;
+  padding: 0 8px 8px 8px;
+  border-radius: 10px;
+}
+.competitionName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.7rem;
+  font-weight: 500;
+  border-bottom: 1px solid $green;
+  height: 70px;
+}
+.competitionName .logoBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+}
+.competitionName .area {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.match {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 800px;
+  height: 40px;
+}
+.homeSide, .awaySide {
+  font-size: 1.2rem;
+}

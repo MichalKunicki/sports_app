@@ -83,18 +83,18 @@ export interface TeamClass {
 
 ///////////////////////////////////
 
-export interface Matches {
+export interface MatchesGroupedArray {
   area:        Area;
-  competition: CompetitionData;
+  competition: Competition;
   season:      Season;
   id:          number;
   utcDate:     Date;
-  status:      Status;
-  matchday:    number | null;
-  stage:       Stage;
+  status:      string;
+  matchday:    null;
+  stage:       string;
   group:       null;
   lastUpdated: Date;
-  homeTeam:    TeamData;
+  homeTeam:    Team;
   awayTeam:    Team;
   score:       Score;
   odds:        Odds;
@@ -103,78 +103,41 @@ export interface Matches {
 
 export interface Area {
   id:   number;
-  name: AreaName;
-  code: AreaCode;
-  flag: null | string;
+  name: string;
+  code: string;
+  flag: null;
 }
 
-export enum AreaCode {
-  Bra = "BRA",
-  Eur = "EUR",
-  Sam = "SAM",
-}
-
-export enum AreaName {
-  Brazil = "Brazil",
-  Europe = "Europe",
-  SouthAmerica = "South America",
-}
-
-export interface TeamData {
+export interface Team {
   id:        number;
   name:      string;
-  shortName: null | string;
-  tla:       null | string;
-  crest:     null | string;
+  shortName: string;
+  tla:       string;
+  crest:     string;
 }
 
-export interface CompetitionData {
+export interface Competition {
   id:     number;
-  name:   CompetitionName;
-  code:   CompetitionCode;
-  type:   Type;
+  name:   string;
+  code:   string;
+  type:   string;
   emblem: string;
 }
 
-export enum CompetitionCode {
-  BSA = "BSA",
-  CLI = "CLI",
-  Cl = "CL",
-}
-
-export enum CompetitionName {
-  CampeonatoBrasileiroSérieA = "Campeonato Brasileiro Série A",
-  CopaLibertadores = "Copa Libertadores",
-  UEFAChampionsLeague = "UEFA Champions League",
-}
-
-export enum Type {
-  Cup = "CUP",
-  League = "LEAGUE",
-}
-
 export interface Odds {
-  msg: Msg;
-}
-
-export enum Msg {
-  ActivateOddsPackageInUserPanelToRetrieveOdds = "Activate Odds-Package in User-Panel to retrieve odds.",
+  msg: string;
 }
 
 export interface Score {
-  winner:   null | string;
-  duration: Duration;
+  winner:   string;
+  duration: string;
   fullTime: Time;
   halfTime: Time;
 }
 
-export enum Duration {
-  Regular = "REGULAR",
-}
-
 export interface Time {
-  home: number | null;
-  away: number | null;
+  home: number;
+  away: number;
 }
 
 export interface Season {
@@ -185,13 +148,3 @@ export interface Season {
   winner:          null;
 }
 
-export enum Stage {
-  Last16 = "LAST_16",
-  QualificationRound1 = "QUALIFICATION_ROUND_1",
-  RegularSeason = "REGULAR_SEASON",
-}
-
-export enum Status {
-  Finished = "FINISHED",
-  Timed = "TIMED",
-}
