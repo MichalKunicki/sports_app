@@ -8,7 +8,7 @@ export default function Navbar() {
         <h1 className={styles.logo}>SPORTIFY.COM</h1>
       </Link>
       <div className={styles.links}>
-        <Link href="/standings">
+        <Link href="/fixtures">
           <a>Fixtures</a>
         </Link>
         <Link href="/standings">

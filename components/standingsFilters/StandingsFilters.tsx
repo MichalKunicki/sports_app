@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "../standingsFilters/StandingsFilters.module.scss";
 import { useRouter } from "next/router";
 
-const StandingsFilters: React.FC = () => {
+const StandingsFilters: React.FunctionComponent = () => {
   const router = useRouter();
 
   const year = new Date().getFullYear();

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import StandingsFilters from "../components/standingsFilters/StandingsFilters";
 
-const Fixtures: NextPage<{ table: TeamStandings[] }> = ({ table }) => {
+const Standings: NextPage<{ table: TeamStandings[] }> = ({ table }) => {
   return (
     <section className={styles.standingsPage}>
       <div>
@@ -35,4 +35,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default Fixtures;
+export default Standings;
