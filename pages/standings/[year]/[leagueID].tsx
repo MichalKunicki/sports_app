@@ -7,10 +7,8 @@ import StandingsFilters from "../../../components/standingsFilters/StandingsFilt
 
 const Fixtures: NextPage<{ table: TeamStandings[] }> = ({ table }) => {
   return (
-    <section className={styles.standingsPage}>
-      <div>
-        <StandingsFilters />
-      </div>
+    <main className={styles.standingsPage}>
+      <StandingsFilters />
       <div className={styles.standingsContainer}>
         <div className={styles.standingsFirstRow}>
           <span>#</span>
@@ -46,7 +44,7 @@ const Fixtures: NextPage<{ table: TeamStandings[] }> = ({ table }) => {
         ))}
       </div>
       {/* <pre>{JSON.stringify(table, undefined, 2)}</pre>; */}
-    </section>
+    </main>
   );
 };
 

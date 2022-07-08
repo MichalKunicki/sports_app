@@ -25,7 +25,7 @@
   font-weight: 500;
   background-color: $gray;
   z-index: 1;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 .date {
   font-size: 0.9em;
@@ -45,7 +45,7 @@
 }
 .image {
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   &:hover {
     opacity: 0.9;
     cursor: pointer;

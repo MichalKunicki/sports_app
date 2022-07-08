@@ -1,11 +1,21 @@
 @import "../styles/variables.scss";
 
 .fixturesPage {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: (2.5fr 1fr);
+  gap: 25px;
+  padding: 10px;
+}
+.header {
+  margin: 0;
+  border-bottom: 1px solid $gray;
+  min-width: 520px;
+  padding-bottom: 18px;
+}
+.allFixturesContainer {
+  display: grid;
+  gap: 20px;
+  align-content: start;
 }
 .competitionContainer {
   display: flex;
@@ -13,12 +23,12 @@
   background-color: $gray;
   color: white;
   padding: 0 8px 8px 8px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .competitionName {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   font-size: 1.7rem;
   font-weight: 500;
   border-bottom: 1px solid $green;
@@ -38,11 +48,17 @@
   font-weight: 400;
 }
 .match {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+}
+.teamVSteam {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-width: 800px;
-  height: 40px;
+  margin-left: 20px;
 }
 .homeSide, .awaySide {
   font-size: 1.2rem;

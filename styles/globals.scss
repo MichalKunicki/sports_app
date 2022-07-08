@@ -6,8 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, Oswald, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, Oswald, BlinkMacSystemFont, Segoe UI, sans-serif;
   scroll-snap-type: y mandatory;
   scroll-padding: 75px;
   margin-bottom: 40px;
@@ -30,7 +29,7 @@ a {
 }
 
 body::-webkit-scrollbar {
-  width: 0.6em;
+  width: 0.5em;
 }
  
 body::-webkit-scrollbar-track {

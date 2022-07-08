@@ -2,22 +2,25 @@
 
 .filtersSection {
   width: 100%;
-  margin-bottom: 25px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  height: 60px;
   gap: 10px;
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  background-color: $gray;
 }
-.filtersSection button, .select {
-  height: 50px;
+.selectBox {
+  height: 35px;
   font-size: 1rem;
   color: white;
-  padding: 10px;
-  margin: 0 5px 0 5px;
-  border-radius: 10px;
-  border: 1px solid $darkGray;
+  margin: 0 10px 0 10px;
+  border: none;
   background-color: $gray;
+  border-bottom: 1px solid white;
   &:hover {
     cursor: pointer;
+    opacity: 0.8;
   }
 }

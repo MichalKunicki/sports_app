@@ -1,6 +1,5 @@
 import styles from "../header/Header.module.scss";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Header() {
   return (
@@ -15,7 +14,7 @@ export default function Header() {
         placeholder="blur"
       />
       <h1 className={styles.headertext}>
-        The last soccer hub you will ever need.
+        The last football hub you will ever need.
       </h1>
       <div className={styles.subheadingContainer}>
         <h2 className={styles.subheadertext}>

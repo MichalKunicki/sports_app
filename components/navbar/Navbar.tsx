@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <h1 className={styles.logo}>SPORTIFY.COM</h1>
+        <h1 className={styles.logo}>foothub.com</h1>
       </Link>
       <div className={styles.links}>
         <Link href="/fixtures">

@@ -148,3 +148,10 @@ export interface Season {
   winner:          null;
 }
 
+///////////////////////////////
+export interface Transfers {
+  title: string;
+  url: string;
+  source: string;
+}
+

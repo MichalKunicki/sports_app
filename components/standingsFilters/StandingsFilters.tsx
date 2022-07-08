@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "../standingsFilters/StandingsFilters.module.scss";
 import { useRouter } from "next/router";
 
@@ -12,14 +11,18 @@ const StandingsFilters: React.FunctionComponent = () => {
   return (
     <section className={styles.filtersSection}>
       <select
-        className={styles.select}
+        className={styles.selectBox}
         onChange={(e) => {
+          e.preventDefault;
           setSeason(Number(e.target.value));
           router.push(
             `/standings/${Number(e.target.value)}/${router.query.leagueID}`
           );
         }}
       >
+        <option disabled selected>
+          Season
+        </option>
         <option className={styles.option} value={year}>
           {year}/{year + 1}
         </option>
@@ -32,7 +35,24 @@ const StandingsFilters: React.FunctionComponent = () => {
           {year - 2}/{year - 1}
         </option>
       </select>
-      <Link href={`/standings/${season}/PL`}>
+      <select
+        className={styles.selectBox}
+        onChange={(e) => {
+          const selectBox = e.target;
+          const selectedValue = selectBox.options[selectBox.selectedIndex].id;
+          router.push(`/standings/${season}/${selectedValue}`);
+        }}
+      >
+        <option disabled selected>
+          League
+        </option>
+        <option id="PL">Premier League</option>
+        <option id="PD">La Liga</option>
+        <option id="FL1">Ligue 1</option>
+        <option id="SA">Serie A</option>
+        <option id="PPL">Primeira Liga</option>
+      </select>
+      {/* <Link href={`/standings/${season}/PL`}>
         <button>Premier League</button>
       </Link>
       <Link href={`/standings/${season}/PD`}>
@@ -49,7 +69,7 @@ const StandingsFilters: React.FunctionComponent = () => {
       </Link>
       <Link href={`/standings/${season}/PPL`}>
         <button>Primeira Liga</button>
-      </Link>
+      </Link> */}
     </section>
   );
 };
