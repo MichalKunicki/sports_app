@@ -138,8 +138,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   );
   const transfersData: Transfers[] = await responseFixtures.json();
-  const transfers = transfersData.slice(0, -1);
-  // .filter((v, i, a) => a.findIndex((v2) => v2.title === v.title) === i);
+  const transfers2 = transfersData.slice(0, -1);
+  const transfers = transfers2.filter(
+    (v, i, a) => a.findIndex((v2) => v2.title === v.title) === i
+  );
+
   console.log(transfers);
 
   return {

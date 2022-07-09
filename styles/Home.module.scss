@@ -7,6 +7,34 @@
   padding: 0 15px 0 15px;
   scroll-padding: 75px;
 }
+.filtersSection {
+  width: 100%;
+  height: 60px;
+  grid-column: 1 / -1;
+  // margin-top: -10px;
+  background-color: $darkGray;
+  display: flex;
+  align-items: center;
+  scroll-snap-align: start;
+}
+.inputBox, .dateBox {
+  height: 35px;
+  width: 200px;
+  font-size: 1.1rem;
+  color: white;
+  margin: 0 10px 0 10px;
+  border: none;
+  background-color: $darkGray;
+  border-bottom: 1px solid green;
+  &::placeholder {
+    color: white;
+  }
+  font-family: -apple-system, Oswald, BlinkMacSystemFont, Segoe UI, sans-serif;
+}
+.dateBox {
+  // Changes the calendar icon from black to white.
+  color-scheme: dark;
+}
 .matchCard {
   width: 100%;
   scroll-snap-align: start;
@@ -49,6 +77,25 @@
   &:hover {
     opacity: 0.9;
     cursor: pointer;
+  }
+}
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+.paginationButton {
+  width: 150px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: $gray;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
   }
 }
 
